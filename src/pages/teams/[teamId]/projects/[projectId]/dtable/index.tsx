@@ -3,8 +3,7 @@ import HeadsAuth, { HeadsDtableNewProps } from 'src/components/heads/Auth'
 import type { NextPageWithLayout } from 'src/types/next'
 import { customGetServerSideProps } from 'src/utils/get-server-side-props'
 import { useRouter } from 'next/router'
-import AtomsButton from 'src/components/atoms/Button'
-import SubstancesDtableTableBase from 'src/components/substances/dtable/table/Base'
+import SubstancesDtableSection from 'src/components/substances/dtable/Section'
 
 const dtablesPage: NextPageWithLayout = () => {
   const router = useRouter()
@@ -12,29 +11,14 @@ const dtablesPage: NextPageWithLayout = () => {
   if (typeof teamId !== 'string' || typeof projectId !== 'string')
     throw new Error('404')
 
-  const onClick = () =>
-    void router.push(`/teams/${teamId}/projects/${projectId}/dtable/new`)
-
   return (
     <>
       <HeadsAuth {...HeadsDtablesProps} />
-      <h1 className='m-10 flex text-3xl font-extrabold leading-normal'>
-        dtables
-      </h1>
-      <AtomsButton
-        className='ml-4'
-        color='primary'
-        size='md'
-        type='button'
-        onClick={onClick}
-      >
-        New
-      </AtomsButton>
-      <div className='mx-10'>
-        <div className='w-full'>
-          <SubstancesDtableTableBase teamId={teamId} projectId={projectId} />
-        </div>
-      </div>
+      <SubstancesDtableSection
+        className='m-10'
+        teamId={teamId}
+        projectId={projectId}
+      />
     </>
   )
 }
