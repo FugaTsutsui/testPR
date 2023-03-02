@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import AtomsButton from 'src/components/atoms/Button'
 import SubstancesDtableTableBase from 'src/components/substances/dtable/table/Base'
 
-const dtablesPage: NextPageWithLayout = () => {
+const DtablesPage: NextPageWithLayout = () => {
   const router = useRouter()
   const { teamId, projectId } = router.query
   if (typeof teamId !== 'string' || typeof projectId !== 'string')
@@ -19,7 +19,7 @@ const dtablesPage: NextPageWithLayout = () => {
     <>
       <HeadsAuth {...HeadsDtablesProps} />
       <h1 className='m-10 flex text-3xl font-extrabold leading-normal'>
-        dtables
+        Dtables
       </h1>
       <AtomsButton
         className='ml-4'
@@ -42,4 +42,4 @@ const dtablesPage: NextPageWithLayout = () => {
 export const getServerSideProps = customGetServerSideProps({
   role: UserRole.USER,
 })
-export default dtablesPage
+export default DtablesPage
